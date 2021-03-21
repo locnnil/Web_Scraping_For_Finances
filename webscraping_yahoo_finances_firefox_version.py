@@ -18,4 +18,24 @@ import json
 
 # End Import section
 
+# Begin Testes Section
+
+url = "https://fiis.com.br/mxrf11/"
+
+option = Options()
+option.headless = True
+"""options=option"""
+
+gecko = os.path.normpath(os.path.join(os.path.dirname(__file__), 'geckodriver'))
+binary = FirefoxBinary(r'C:\Program Files (x86)\Mozilla Firefox\firefox.exe')
+driver = webdriver.Firefox(firefox_binary=binary, executable_path=gecko+'.exe')
+
+driver.get(url)
+
+time.sleep(4)
+
+driver.quit()
+
+
+
 
