@@ -5,7 +5,6 @@ Author: Lincoln Wallace
 date: 07/03/2021
 file: webscraping_yahoo_finances.py
 """
-
 import json
 import time
 import requests
@@ -16,10 +15,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-#option = options()
-#option.headless = True
-# Tests section: Testing Selenium functions
 
 url =   ['http://www.google.com/',
          'https://fiis.com.br/',
@@ -50,6 +45,7 @@ PATH = "..\Finances_project\chromedriver.exe"
 for i in range(len(fiis)):
 
         # open a new window
+        # OBS: necessary to correct, for better optimization in this part of code
         driver =  webdriver.Chrome(PATH)
         driver.get(urlfiis+fiis[i])
         driver.implicitly_wait(10) # seconds # Stop to user see something!
@@ -64,11 +60,8 @@ for i in range(len(fiis)):
         time.sleep(3)
         driver.close()
 
-# search_icon = driver.find_element_by_id(id) 
-# search_icon.click()
+driver.quit()   # End of execution, closing browser
 
-# search.send_keys(fiis[0])
-# search_box.submit()
 
 
 """
