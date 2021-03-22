@@ -3,6 +3,7 @@ Webscraping from yahoo finances
 
 Author: Lincoln Wallace
 date: 07/03/2021
+file: webscraping_yahoo_finances.py
 """
 
 import json
@@ -20,8 +21,6 @@ from selenium.webdriver.support import expected_conditions as EC
 #option.headless = True
 # Tests section: Testing Selenium functions
 
-url = []
-
 url =   ['http://www.google.com/',
          'https://fiis.com.br/',
          'https://finance.yahoo.com/',
@@ -29,33 +28,47 @@ url =   ['http://www.google.com/',
          ''
         ]
 
-fiis =  ['MXRF11',
-         'HLGL11',
-         '',
-         '',
-         '',
-         ''
+urlfiis = 'https://fiis.com.br/'
+
+fiis =  ['XPLG11',
+         'MXRF11',
+         'HGLG11',
+         'XPML11',
+         'BCFF11',
+         'RECT11',
+         'HFOF11',
+         'HSML11',
+         'HTMX11',
+         'KNIP11',
         ]
 
 # Location off Chrome driver
-PATH = "..\Finances_project\chromedriver.exe" 
-driver =  webdriver.Chrome(PATH)
-
-driver.get(url[1])
-time.sleep(2) # Stop to user see something!
+PATH = "..\Finances_project\chromedriver.exe"
 
 
-id = "main-search"
+# open fiis pages
+for i in range(len(fiis)):
 
-search_icon = driver.find_element_by_id(id)
-search_icon.click()
+        # open a new window
+        driver =  webdriver.Chrome(PATH)
+        driver.get(urlfiis+fiis[i])
+        driver.implicitly_wait(10) # seconds # Stop to user see something!
+        try:
+                # Close adds about ebook
+                element = WebDriverWait(driver,20).until(
+                        EC.presence_of_element_located((By.ID,"popup-x"))
+                        )
+                element.click()
+        except:
+                print("Deu ruim em fechar o anuncio")
+        time.sleep(3)
+        driver.close()
 
+# search_icon = driver.find_element_by_id(id) 
+# search_icon.click()
 
-search.send_keys(fiis[0])
-search_box.submit()
-
-time.sleep(3)
-driver.quit()
+# search.send_keys(fiis[0])
+# search_box.submit()
 
 
 """
