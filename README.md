@@ -9,6 +9,7 @@ Necessary Libraries:
 *    pandas
 *    requests2
 *    selenium
+*    xlsxwriter
 
 ## Authors:
 
