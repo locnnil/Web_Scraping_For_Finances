@@ -29,9 +29,6 @@ url_home = "https://fundamentei.com/"
 acoes = ['ITSA4',
          'WEGE3',
          'PETR4',
-         '',
-         '',
-         '',
          ]
 
 driver = webdriver.Chrome(PATH)
@@ -78,6 +75,14 @@ except:
 for i in range(len(acoes)):
     print(acoes[i])
     driver.get(url_home+"/br/"+acoes[i])
+    try:
+        # Close adds about ebook
+        element = driver.find_element_by_class_name("css-1b8yuao")
+        html_content = element.get_attribute('outerHTML')
+        print(html_content)
+    except:
+        print("Erro ao Carregar tabela")
+
     # loop to be implemented
     # Get stonks indicators
 
