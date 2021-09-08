@@ -9,12 +9,15 @@ import json
 import time
 import requests
 import pandas as pd
+import numpy as np
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+'''
 
 url = ['http://www.google.com/',
        'https://fiis.com.br/',
@@ -88,3 +91,31 @@ To access elements in a HTML code we normaly have: ID -> NAME -> CLASS_NAME
 
 <input type="text" name="search_keyword" id="main-search--keyword" autocomplete="off">
 """
+'''
+
+########################################## Faking data generating #####################################################
+
+url = "https://forms.gle/s9z9TuPMSW278hVP6"
+
+# Location off Chrome driver
+PATH = "..\Finances_project\chromedriver.exe"
+
+# open a new window
+# OBS: necessary to correct, for better optimization in this part of code
+driver = webdriver.Chrome(PATH)
+driver.get(url)
+driver.implicitly_wait(3)  # seconds # Stop to user see something!
+
+class_name = 'quantumWizTextinputPaperinputInputArea'
+idade = '21'
+
+try:
+    # Close adds about ebook
+    element = WebDriverWait(driver, 8).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "css-zbgoky"))
+    )
+    element.send_keys(idade)
+except:
+    print("Erro em clicar no email e digitar")
+
+

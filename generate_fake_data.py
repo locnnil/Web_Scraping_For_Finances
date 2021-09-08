@@ -19,16 +19,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-url = "https://forms.gle/s9z9TuPMSW278hVP6"
 
-# Location off Chrome driver
-PATH = "..\Finances_project\chromedriver.exe"
-
-# open a new window
-# OBS: necessary to correct, for better optimization in this part of code
-driver = webdriver.Chrome(PATH)
-driver.get(url)
-driver.implicitly_wait(3)  # seconds # Stop to user see something!
 
 
 
