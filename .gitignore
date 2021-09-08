@@ -1,5 +1,3 @@
 *.bat
-fundamentus_log.py
 .idea/*
-__pycache__/*
 webscrap/Lib/site-packages/*
