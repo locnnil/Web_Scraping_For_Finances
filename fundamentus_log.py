@@ -72,8 +72,11 @@ try:
 except:
     print("Erro ao clicar em 'logar' ")
 
+time.sleep(1)
+
 for i in range(len(acoes)):
     print(acoes[i])
+    time.sleep(2)
     driver.get(url_home+"/br/"+acoes[i])
     try:
         # Close adds about ebook
@@ -83,6 +86,7 @@ for i in range(len(acoes)):
     except:
         print("Erro ao Carregar tabela")
 
+driver.quit()
     # loop to be implemented
     # Get stonks indicators
 
